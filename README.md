@@ -28,7 +28,7 @@ You can start all containers using the following script:
 The script creates the network and starts both platforms: Confluent Platform and RabbitMQ.
 
 Web Interfaces 
-- **Confluent Control Center**: http://localhost:9021/
+- **Confluent Control Center**: http://localhost:9021
 - **RabbitMQ Management**: http://localhost:15672 (guest/guest)
 
 
