@@ -12,6 +12,14 @@ No additional supporting structures (queues or topics) are created either in Rab
 ![Migration Diagram](/assets/migration_diagram.svg)
 
 # Running PoC
+
+The subject of this PoC is the migration of the RabbitMQ queue `articles` to a Kafka topic, so that a Java consumer can retrieve `articles` using an Avro schema.  
+Messages should be forwarded to the Kafka topic until the producer is switched to write directly to Kafka.  
+The migration process is illustrated in the following sequence diagram:
+
+![Articles Migration Diagram](/assets/poc_sequence_diagram.svg)
+
+
 ## Running RabbitMQ and Confluent Platform
 
 To run this example, you need **Podman** and **podman-compose**.  

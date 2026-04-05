@@ -1,0 +1,15 @@
+@startuml
+title RabbitMQ to Confluent Platform Migration Flow
+
+participant "Article Service" as Service
+participant "RabbitMQ Queue\narticles" as Rabbit
+participant "Kafka Connect\nRabbitMQ Source Connector" as Connector
+participant "Kafka Topic\narticles (Avro)" as Kafka
+participant "Consumer Application" as Consumer
+
+Service -> Rabbit : Send JSON message
+Connector -> Rabbit : Read message
+Connector -> Connector : Transform JSON -> Avro
+Connector -> Kafka : Publish message
+Consumer -> Kafka : Consume message
+@enduml
