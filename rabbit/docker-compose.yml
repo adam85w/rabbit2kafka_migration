@@ -1,0 +1,17 @@
+---
+services:
+  rabbitmq:
+    image: docker.io/rabbitmq:4.0-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    stdin_open: true
+    tty: true
+    restart: "no"
+
+# Due to RabbitMQ being in a separate Docker Compose
+networks:
+  default:
+    external:
+      name: shared-network

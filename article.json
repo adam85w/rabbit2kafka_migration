@@ -1,0 +1,6 @@
+{
+  "properties": {},
+  "routing_key": "articles",
+  "payload": "{\"title\": \"Kafka to RabbitMQ migration\",\"content\": \"The process works completely fine when using the Confluent Platform.\"}",
+  "payload_encoding": "string"
+}

@@ -1,0 +1,29 @@
+@startuml
+!define ICONURL https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/master
+!includeurl ICONURL/C4_Deployment.puml
+!includeurl ICONURL/C4_Component.puml
+!includeurl ICONURL/C4_Context.puml
+
+title RabbitMQ to Confluent Platform Migration - Component Diagram
+
+' Consumer App as a container (not a person)
+Container(consumer_app, "Consumer App", "Application", "Consumes messages from Kafka Topic")
+
+System_Boundary(rabbitmq_sys, "RabbitMQ") {
+    Container(rabbit_queue, "Queue", "RabbitMQ", "Stores messages to migrate") 
+}
+
+System_Boundary(confluent_sys, "Confluent Platform") {
+    Container(kafka_topic, "Kafka Topic", "Kafka", "Receives migrated messages")
+    Container(schema_registry, "Schema Registry", "Avro Schema Registry", "Stores Avro schemas")
+}
+
+Container(connector, "Migration Connector", "Connector", "Transforms JSON messages to Avro and sends to Kafka") 
+
+' Message flow
+connector --> rabbit_queue : Reads JSON messages
+connector --> kafka_topic : Produces Avro messages
+connector --> schema_registry : Registers Avro schema
+consumer_app --> kafka_topic : Consumes messages
+consumer_app --> schema_registry : Gets Avro schema
+@enduml

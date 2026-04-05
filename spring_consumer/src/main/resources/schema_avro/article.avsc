@@ -1,0 +1,24 @@
+{
+  "connect.name": "net.adam85w.rabbit2kafka_migration.Article.Article",
+  "fields": [
+    {
+      "default": null,
+      "name": "content",
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    {
+      "default": null,
+      "name": "title",
+      "type": [
+        "null",
+        "string"
+      ]
+    }
+  ],
+  "name": "Article",
+  "namespace": "net.adam85w.rabbit2kafka_migration",
+  "type": "record"
+}

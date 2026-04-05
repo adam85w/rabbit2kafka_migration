@@ -1,0 +1,25 @@
+{
+  "name": "articles_source_connector",
+  "config": {
+    "connector.class": "io.confluent.connect.rabbitmq.RabbitMQSourceConnector",
+    "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+    "value.converter": "io.confluent.connect.avro.AvroConverter",
+    "header.converter": "org.apache.kafka.connect.storage.StringConverter",
+    "transforms": "ParseJson, SetMetadata",
+    "transforms.ParseJson.type": "com.github.jcustenborder.kafka.connect.json.FromJson$Value",
+    "transforms.ParseJson.json.schema.inline": "{\"type\":\"object\",\"properties\":{\"title\":{\"type\":\"string\"},\"content\":{\"type\":\"string\"}}}",
+    "transforms.ParseJson.json.schema.location": "Inline",
+    "transforms.SetMetadata.type": "org.apache.kafka.connect.transforms.SetSchemaMetadata$Value",
+    "transforms.SetMetadata.schema.name": "net.adam85w.rabbit2kafka_migration.Article",
+    "rabbitmq.host": "rabbitmq",
+    "rabbitmq.username": "guest",
+    "rabbitmq.password": "guest",
+    "rabbitmq.virtual.host": "/",
+    "rabbitmq.port": "5672",
+    "kafka.topic": "articles",
+    "rabbitmq.queue": "articles",
+    "header.converter.converter.type": "AVRO",
+    "__internal.config.version": "910f5501b5c1027a36d6c7d62d869d8279d972769f2a1e90a66afe4b6fec9ecd",
+    "value.converter.schema.registry.url": "http://schema-registry:8081"
+  }
+}
