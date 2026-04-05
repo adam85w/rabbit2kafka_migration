@@ -15,9 +15,8 @@ No additional supporting structures (queues or topics) are created either in Rab
 ## Running RabbitMQ and Confluent Platform
 
 To run this example, you need **Podman** and **podman-compose**.  
-Alternatively, you can use **Docker** and **docker-compose**.
-
-Even though separate compose files are used, both systems are connected via a shared network.
+Alternatively, you can use **Docker** and **docker-compose**.  
+However, all the commands below are written with Podman in mind.
 
 You can start all containers using the following script:
 
@@ -25,7 +24,7 @@ You can start all containers using the following script:
 ./run.sh
 ```
 
-The script creates the network and starts both platforms: Confluent Platform and RabbitMQ.
+The script creates a shared network and starts both platforms: Confluent Platform and RabbitMQ.
 
 Web Interfaces 
 - **Confluent Control Center**: http://localhost:9021
@@ -57,6 +56,8 @@ After sending the first message, a Kafka topic should be created automatically a
 You can consume the message using the sample Java application located in the `spring_consumer` directory.
 
 ![Spring APP](/assets/spring_app.png)
+
+If something goes wrong, you can check the connector logs using the `podman logs -f connect` command.
 
 ## Tools Used
 
