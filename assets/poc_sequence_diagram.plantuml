@@ -1,11 +1,17 @@
 @startuml
 title RabbitMQ to Confluent Platform Migration Flow
 
-participant "Article Service" as Service
+skinparam participant {
+    BackgroundColor #438DD5
+    BorderColor #468FD5
+    FontColor #FFFFFF
+}
+
+participant "Article Service\nsend_article.sh" as Service
 participant "RabbitMQ Queue\narticles" as Rabbit
 participant "Kafka Connect\nRabbitMQ Source Connector" as Connector
 participant "Kafka Topic\narticles (Avro)" as Kafka
-participant "Consumer Application" as Consumer
+participant "Consumer Application\nspring_consumer" as Consumer
 
 Service -> Rabbit : Send JSON message
 Connector -> Rabbit : Read message
