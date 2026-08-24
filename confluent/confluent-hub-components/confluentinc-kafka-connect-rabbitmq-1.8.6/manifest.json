@@ -1,6 +1,6 @@
 {
   "name" : "kafka-connect-rabbitmq",
-  "version" : "1.7.13",
+  "version" : "1.8.6",
   "title" : "Kafka Connect RabbitMQ",
   "description" : "Kafka Source Connector for RabbitMQ",
   "owner" : {
@@ -29,5 +29,5 @@
     "url" : "https://www.confluent.io/software-evaluation-license"
   } ],
   "component_types" : [ "source" ],
-  "release_date" : "2025-03-10"
+  "release_date" : "2026-07-19"
 }
